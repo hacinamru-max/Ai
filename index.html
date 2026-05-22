@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HackerAI · Ultra</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⎈</text></svg>"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <button id="menuBtn" class="icon-btn" aria-label="Menü">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="brand">
+                <span class="brand-icon">⎈</span>
+                <h1>HackerAI</h1>
+                <span class="badge">Ultra</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-label">Ready</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="webBtn" class="icon-btn" title="Web Gezintisi">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </button>
+            <button id="settingsBtn" class="icon-btn" title="Ayarlar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+            <button id="clearBtn" class="icon-btn" title="Temizle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-inner">
+                <button id="newChatBtn" class="new-chat-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Yeni Sohbet
+                </button>
+                <div class="search-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="chatSearchInput" placeholder="Sohbet ara..." />
+                </div>
+                <div id="chatList" class="chat-list"></div>
+                <div class="sidebar-footer">
+                    <span class="model-name">🧠 Gemini 3.5 Flash</span>
+                    <span class="hacker-badge">HACKER</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CHAT AREA -->
+        <main class="chat-area">
+            <div id="messages" class="messages"></div>
+
+            <!-- INPUT -->
+            <div class="input-section">
+                <div id="filePreview" class="file-preview"></div>
+                <div class="input-row">
+                    <button id="attachBtn" class="input-action-btn" title="Dosya ekle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                    </button>
+                    <input type="file" id="fileInput" multiple accept="image/*,.txt,.pdf,.py,.js,.html,.css,.go,.rs,.php,.java,.c,.cpp,.zip,.json,.xml,.md,.csv" />
+                    <textarea id="userInput" rows="1" placeholder="Ne yapmak istiyorsun? Hiçbir sınır yok..." autofocus></textarea>
+                    <button id="sendBtn" class="send-btn" title="Gönder">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    HackerAI Ultra · Sansürsüz · Sınırsız
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- WEBVIEW OVERLAY -->
+<div id="webviewOverlay" class="overlay">
+    <div class="webview-panel">
+        <div class="webview-toolbar">
+            <button class="wv-btn" id="wvBack">◀</button>
+            <button class="wv-btn" id="wvForward">▶</button>
+            <button class="wv-btn" id="wvRefresh">⟳</button>
+            <div class="wv-url-container">
+                <input type="text" id="wvUrl" value="https://google.com" />
+            </div>
+            <button class="wv-btn wv-go" id="wvGo">Git</button>
+            <button class="wv-btn wv-close" id="wvCloseBtn">✕</button>
+        </div>
+        <iframe id="wvIframe" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
+    </div>
+</div>
+
+<!-- SETTINGS OVERLAY -->
+<div id="settingsOverlay" class="overlay">
+    <div class="settings-panel">
+        <div class="settings-header">
+            <h2>⚙️ Ayarlar</h2>
+            <button class="wv-btn wv-close" id="settingsCloseBtn">✕</button>
+        </div>
+        <div class="settings-body">
+            <div class="setting-row">
+                <label>API Anahtarı</label>
+                <input type="password" id="setApiKey" value="AIzaSyA7JgClo2wICDbLNmnNKyROQVzJYpPGbpo" />
+            </div>
+            <div class="setting-row">
+                <label>Model</label>
+                <select id="setModel">
+                    <option value="gemini-3.5-flash" selected>Gemini 3.5 Flash</option>
+                    <option value="gemini-2.0-pro">Gemini 2.0 Pro</option>
+                    <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                </select>
+            </div>
+            <div class="setting-row">
+                <label>Sıcaklık: <span id="tempVal">0.9</span></label>
+                <input type="range" id="setTemp" min="0" max="2" step="0.1" value="0.9" />
+            </div>
+            <div class="setting-row">
+                <label>Maks. Token</label>
+                <select id="setMaxTokens">
+                    <option value="4096">4.096</option>
+                    <option value="8192" selected>8.192</option>
+                    <option value="16384">16.384</option>
+                </select>
+            </div>
+            <div class="setting-row toggle-row">
+                <span>Kopyalama bildirimi</span>
+                <label class="toggle"><input type="checkbox" id="setCopyNotify" checked /><span class="toggle-slider"></span></label>
+            </div>
+            <div class="setting-row toggle-row">
+                <span>Otomatik kaydır</span>
+                <label class="toggle"><input type="checkbox" id="setAutoScroll" checked /><span class="toggle-slider"></span></label>
+            </div>
+        </div>
+        <div class="settings-footer">
+            <button class="btn-sec" id="settingsCancelBtn">İptal</button>
+            <button class="btn-pri" id="settingsSaveBtn">Kaydet</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
