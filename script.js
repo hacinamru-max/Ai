@@ -4,7 +4,7 @@
 
 // ─── CONFIGURATION ───
 let CONFIG = {
-    apiKey: 'AIzaSyA7JgClo2wICDbLNmnNKyROQVzJYpPGbpo',
+    apiKey: 'AIzaSyBn3gUuD1XR0uALWa5nIipDgjUkvnvoq2Q',
     model: 'gemini-3.5-flash',
     temperature: 0.9,
     maxTokens: 8192,
